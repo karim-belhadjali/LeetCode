@@ -103,3 +103,6 @@ var productExceptSelf = function (nums) {
 
     return result
 };
+
+
+// The result that I have after this training is To deal with all Array cases other than self we should create a suffix and prefix arrays to hold the data for us 
