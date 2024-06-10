@@ -43,29 +43,28 @@ var productExceptSelf = function (nums) {
     // in the suffix array the last element will be 1
     // then will loop through the array to create an ouptput array in which each case is equal to suffix[i]* prefix[i]
 
+    let leftProduct = new Array(nums.length).fill(1);
+    let rightProduct = new Array(nums.length).fill(1);
+    let result = new Array(nums.length).fill(1);
 
-    let output = []
-    let prefix = []
-    let suffix = []
+    // calculate the left product
+
+    for (let i = 1; i < nums.length; i++) {
+        leftProduct[i] = nums[i - 1] * leftProduct[i - 1];
+    }
+
+    // calculate the right product
+
+    for (let i = nums.length - 2; i >= 0; i--) {
+        rightProduct[i] = nums[i + 1] * rightProduct[i + 1];
+    }
+
+    // calculate the answer
 
     for (let i = 0; i < nums.length; i++) {
-        if (i === 0) prefix[i] = 1
-        else {
-            prefix[i] = prefix[i - 1] * nums[i - 1]
-        }
+        result[i] = leftProduct[i] * rightProduct[i];
     }
-
-    for (let j = nums.length - 1; j >= 0; j--) {
-        if (j === nums.length - 1) suffix[j] = 1
-        else {
-            suffix[j] = suffix[j + 1] * nums[j + 1]
-        }
-    }
-
-    for (let l = 0; l < nums.length; l++) {
-        output[l] = suffix[l] * prefix[l]
-    }
-    return output
+    return result
 };
 
 // Second Valid answwer but no of space complexity of O(1)
@@ -105,4 +104,4 @@ var productExceptSelf = function (nums) {
 };
 
 
-// The result that I have after this training is To deal with all Array cases other than self we should create a suffix and prefix arrays to hold the data for us 
+// The result that I have after this training is To deal with all Array cases other than self we should create a suffix and prefix arrays to hold the data for us
