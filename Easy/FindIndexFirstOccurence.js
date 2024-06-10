@@ -91,6 +91,6 @@ var strStr = function (haystack, needle) {
     if (haystackLength < needleLength) return -1;
 
     for (let i = 0; i <= haystackLength - needleLength; i++) {
-        if (haystack.substr(i, needleLength) === needle) return i;
+        if (haystack.substring(i, needleLength) === needle) return i;
     }
 };
