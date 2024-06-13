@@ -48,3 +48,14 @@ var isPalindrome = function (s) {
     return wordArray.join("") === wordArray.reverse().join("")
 
 };
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindromeUpgraded = function (s) {
+    s = s.toLowerCase().replace(/[^a-z0-9]/gi, '');
+    if (s.length < 1) return true
+    return s === s.split("").reverse().join("")
+
+};
